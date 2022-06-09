@@ -10,6 +10,7 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 ## List of Services / Features:
 
 - Manage the houses.
+- Manage the appointments.
 - Manage the house's belongings.
 - Manage the house owner.
 - Manage the packers.
@@ -37,6 +38,7 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 
 - Get the house information.
 - Get the house owner information.
+- view appointments.
 - Add house blenggings.
 - Edit house blenggings.
 - Delete house blenggings.
