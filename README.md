@@ -54,18 +54,14 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 
 
 ##### House:
-- Address
-- City
-- Owner
-
-##### NewHouse:
-- Address
+- Previous_Address
+- New_Address
 - City
 - Owner
 
 ##### Belongings:
 - House
-- Name ( couch, wardrobe…)
+- Name (couch, wardrobe, silverware...)
 - Type(furniture, kitchenware, clothes, toys, or other can be written )
 - Room (living room, kitchen, bedroom, kids room)
 
