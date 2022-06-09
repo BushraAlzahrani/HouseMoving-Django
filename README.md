@@ -64,8 +64,7 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 
 #### Apointment:
 - House
-- Packer
-- Driver
+- User
 - Date/time
 
 ##### Belongings:
