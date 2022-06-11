@@ -73,13 +73,8 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 - Type(furniture, kitchenware, clothes, toys, or other can be written )
 - Room (living room, kitchen, bedroom, kids room)
 
-
-##### PackingSupplies:
-- Material (cardboard, bubble wrap, tissue paper)
-- Quantity
-
 ##### Car/Truck:
-- Name
 - Size
 - House
 - Driver
+- Quantity
