@@ -5,10 +5,10 @@ from django.contrib.auth.models import User
 
 class House(models.Model):
     ''' this model is for storing house information '''
-
-    previous_address = models.CharField()
-    new_address = models.CharField()
-    city = models.CharField()
+    name = models.CharField(max_length=150)
+    previous_address = models.CharField(max_length=250) # street, neighborhood
+    new_address = models.CharField(max_length=250) # street, neighborhood
+    #city = models.CharField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Appointment(models.Model):
@@ -20,24 +20,30 @@ class Appointment(models.Model):
 
 class Belongings(models.Model):
     ''' this model is for storing the house's belongings information '''
+    class BelongingType(models.TextChoices):
+        FURNITURE = 'furniture'
+        KITCHENWARE = 'kitchenware'
+        CLOTHES = 'clothes'
+        TOYS = 'toys'
+        OTHER= ''
+
+    class Room(models.TextChoices):
+        LIVINGROOM= 'livingroom'
+        GUESTROOM= 'guestroom'
+        KITCHEN= 'kitchen'
+        BEDROOM = 'bedroom'
+        KIDSROOM = 'kidsroom'
 
     house = models.ForeignKey(House, on_delete=models.CASCADE)
-    name= models.CharField()#(couch, wardrobe, silverware...)
-    type_belonging = models.CharField() #choices (furniture, kitchenware, clothes, toys, or other can be written )
-    room= models.CharField() #choices (livingroom, kitchen, bedroom, kids room)
+    name= models.CharField(max_length=50)#(couch, wardrobe, silverware...)
+    type_belonging = models.CharField(choices=BelongingType.choices, max_length=20)
+    room= models.CharField(choices=Room.choices, max_length=20)
 
-'''
-class PackingSupplies (models.Model):
-    this model is for storing the packing supplies needed for packing the belongings 
-
-    material =models.CharField() #(cardboard, bubble-wrap, tissue-paper)
-    quantity = models.IntegerField()
-'''
 
 class MovingTruck(models.Model):
     ''' this model is for storing the trucks available to move the belongings '''
 
     house = models.ForeignKey(House, on_delete=models.CASCADE)
-    Size = models.CharField() #choices?
+    Size = models.CharField(max_length=20) #choices?
     quantity = models.IntegerField()
     driver = models.ForeignKey(User, on_delete=models.CASCADE)
