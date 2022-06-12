@@ -24,13 +24,15 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 - Create, Read, Update, Delete House Owner.
 - Create, Read, Update, Delete Packers.
 - Create, Read, Update, Delete Drivers.
+- Read, Delete Houses.
 
 ### House Owner
 
 - Add House.
 - Edit house information.
-- Delete House.
 - Reserve appointment.
+- edit appointment.
+- delete appointment.
 - View their information.
 - Edit their information.
 
