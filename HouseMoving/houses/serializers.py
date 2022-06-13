@@ -21,6 +21,13 @@ class AppointmentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AppointmentSerializerUpdate(serializers.ModelSerializer):
+
+    class Meta:
+        model = Appointment
+        exclude= ['users',]
+
+
 
 class BelongingsSerializer(serializers.ModelSerializer):
 

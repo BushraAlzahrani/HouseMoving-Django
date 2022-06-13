@@ -7,3 +7,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username', 'email', 'password']
+
+
+
+class UserSearchSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        exclude=['password',]

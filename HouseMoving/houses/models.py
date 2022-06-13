@@ -26,6 +26,7 @@ class Belongings(models.Model):
         CLOTHES = 'clothes'
         TOYS = 'toys'
         OTHER= ''
+        # electronics
 
     class Room(models.TextChoices):
         LIVINGROOM= 'livingroom'

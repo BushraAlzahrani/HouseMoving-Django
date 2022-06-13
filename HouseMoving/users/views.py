@@ -6,7 +6,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import AccessToken
-from .serializers import UserRegisterSerializer
+from .serializers import UserRegisterSerializer, UserSearchSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
@@ -52,7 +52,7 @@ def search_user (request: Request, username):
 
    user_search= User.objects.filter(username__contains= username.lower())
 
-   user_info = UserRegisterSerializer(instance=user_search,  many=True).data
+   user_info = UserSearchSerializer(instance=user_search,  many=True).data
    if user_info:
        dataResponse = {
            "User": user_info

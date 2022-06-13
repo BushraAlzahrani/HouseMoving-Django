@@ -183,7 +183,7 @@ def add_appointment(request : Request):
         adding_appointment.save()
         dataResponse = {
             "msg" : "Created Successfully",
-            "house": adding_appointment.data
+            "appointment": adding_appointment.data
         }
         return Response(dataResponse)
     else:
@@ -203,7 +203,7 @@ def list_appointment(request : Request):
     appointments_list = AppointmentSerializer(instance=appointment, many=True).data
     dataResponse = {
         "msg": "List of All Appointments",
-        "houses": appointments_list
+        "appointments": appointments_list
     }
     return Response(dataResponse)
 
@@ -217,16 +217,21 @@ def update_appointment(request: Request,appo_id):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
     appointment = Appointment.objects.get(id=appo_id)
-    updated_appointment = AppointmentSerializer(instance=appointment, data=request.data)
-    if updated_appointment.is_valid():
-        updated_appointment.save()
-        dataResponse = {
-            "msg": "Updated Appointment Successfully",
-        }
-        return Response(dataResponse)
+    print(request.user.id)
+    print(appointment.users.id)
+    if appointment.users.id == request.user.id:
+        updated_appointment = AppointmentSerializerUpdate(instance=appointment, data=request.data)
+        if updated_appointment.is_valid():
+            updated_appointment.save()
+            dataResponse = {
+                "msg": "Updated Appointment Successfully",
+            }
+            return Response(dataResponse)
+        else:
+            print(updated_appointment.errors)
+            return Response({"msg": "couldn't update the appointment"}, status=status.HTTP_400_BAD_REQUEST)
     else:
-        print(updated_appointment.errors)
-        return Response({"msg": "couldn't update the appointment"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
@@ -238,8 +243,11 @@ def delete_appointment(request: Request, appo_id):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
     appointment = Appointment.objects.get(id=appo_id)
-    appointment.delete()
-    return Response({"msg" : "Deleted Appointment Successfully"})
+    if appointment.users.id == request.user.id:
+        appointment.delete()
+        return Response({"msg" : "Deleted Appointment Successfully"})
+    else:
+        return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
