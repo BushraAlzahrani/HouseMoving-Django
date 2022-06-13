@@ -8,8 +8,11 @@ class House(models.Model):
     name = models.CharField(max_length=150)
     previous_address = models.CharField(max_length=250) # street, neighborhood
     new_address = models.CharField(max_length=250) # street, neighborhood
-    #city = models.CharField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
 
 class Appointment(models.Model):
     ''' this model is for storing appointment reservation information '''
@@ -25,8 +28,7 @@ class Belongings(models.Model):
         KITCHENWARE = 'kitchenware'
         CLOTHES = 'clothes'
         TOYS = 'toys'
-        OTHER= ''
-        # electronics
+        ELECTRONICS= 'electronics'
 
     class Room(models.TextChoices):
         LIVINGROOM= 'livingroom'
@@ -40,11 +42,13 @@ class Belongings(models.Model):
     type_belonging = models.CharField(choices=BelongingType.choices, max_length=20)
     room= models.CharField(choices=Room.choices, max_length=20)
 
+    def __str__(self):
+        return self.name
 
 class MovingTruck(models.Model):
     ''' this model is for storing the trucks available to move the belongings '''
 
     house = models.ForeignKey(House, on_delete=models.CASCADE)
-    Size = models.CharField(max_length=20) #choices?
+    Size = models.CharField(max_length=20)
     quantity = models.IntegerField()
     driver = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -14,4 +14,4 @@ class UserSearchSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude=['password',]
+        fields = ['id','username', 'email']
