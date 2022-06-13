@@ -41,6 +41,7 @@ class Belongings(models.Model):
     name= models.CharField(max_length=50)#(couch, wardrobe, silverware...)
     type_belonging = models.CharField(choices=BelongingType.choices, max_length=20)
     room= models.CharField(choices=Room.choices, max_length=20)
+    quantity = models.IntegerField()
 
     def __str__(self):
         return self.name
