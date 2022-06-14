@@ -56,6 +56,12 @@ class BelongingsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class BelongingsHouseSerializer(serializers.ModelSerializer):
+    house = HousesSerializer()
+    class Meta:
+        model = Belongings
+        fields = '__all__'
+
 class TrucksSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovingTruck

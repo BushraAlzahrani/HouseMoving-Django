@@ -127,9 +127,9 @@ def list_belonging(request : Request):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
     belongings = Belongings.objects.all()
-    belongings_list = BelongingsSerializer(instance=belongings, many=True).data
+    belongings_list = BelongingsHouseSerializer(instance=belongings, many=True).data
     dataResponse = {
-        "msg": "List of All Houses",
+        "msg": "List of All House's belongings",
         "houses": belongings_list
     }
     return Response(dataResponse)
