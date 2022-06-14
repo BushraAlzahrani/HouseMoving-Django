@@ -20,6 +20,7 @@ urlpatterns = [
     path("appointment/all", views.list_appointment, name="list_appointment"),
     path("appointment/update/<appo_id>", views.update_appointment, name="update_appointment"),
     path("appointment/delete/<appo_id>", views.delete_appointment, name="delete_appointment"),
+    path("appointment/", views.user_appointment, name="user_appointment"),
 
     # Moving Trucks
     path("truck/all", views.list_truck, name="list_truck"),

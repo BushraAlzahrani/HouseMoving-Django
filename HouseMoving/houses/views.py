@@ -208,6 +208,26 @@ def list_appointment(request : Request):
     return Response(dataResponse)
 
 
+@api_view(['GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def user_appointment(request : Request):
+    ''' this view function is for the user appointment'''
+    if not request.user.is_authenticated or not request.user.has_perm('houses.view_appointment'):
+        return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
+
+    appointment = Appointment.objects.filter(users=request.user.id)
+    print(request.user.id)
+    if appointment.exists():
+        #user_appointment = AppointmentSerializer(instance=appointment, many=True).data
+        dataResponse = {
+            "msg": "Your Appointment",
+            "appointments": AppointmentSerializer(instance=appointment, many=True).data
+        }
+        return Response(dataResponse)
+    else:
+        return Response({"msg": "You don't have an Appointment"})
+
 @api_view(['PUT'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
