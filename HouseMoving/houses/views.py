@@ -89,11 +89,15 @@ def delete_house(request: Request, house_id):
     ''' this view function is for deleting the house if the user is authenticated as the admin'''
     if not request.user.is_authenticated or not request.user.has_perm('houses.delete_house'):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
-
-    house = House.objects.get(id=house_id)
-    house.delete()
-    return Response({"msg" : "Deleted House Successfully"})
-
+    try:
+        house = House.objects.get(id=house_id)
+        if house.owner.id == request.user.id:
+            house.delete()
+            return Response({"msg" : "Deleted House Successfully"})
+        else:
+            return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
+    except:
+        return Response({"msg": "Could not delete, not found "}, status=status.HTTP_404_NOT_FOUND)
 
 
 # House Belongings Views:
@@ -164,9 +168,12 @@ def delete_belonging(request: Request, belong_id):
     if not request.user.is_authenticated or not request.user.has_perm('houses.delete_belongings'):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
-    belonging = Belongings.objects.get(id=belong_id)
-    belonging.delete()
-    return Response({"msg" : "Deleted House's belonging Successfully"})
+    try:
+        belonging = Belongings.objects.get(id=belong_id)
+        belonging.delete()
+        return Response({"msg" : "Deleted House's belonging Successfully"})
+    except:
+        return Response({"msg": "Could not delete, not found "}, status=status.HTTP_404_NOT_FOUND)
 
 # Appointments Views:
 
@@ -268,12 +275,16 @@ def delete_appointment(request: Request, appo_id):
     if not request.user.is_authenticated or not request.user.has_perm('houses.delete_appointment'):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
-    appointment = Appointment.objects.get(id=appo_id)
-    if appointment.users.id == request.user.id:
-        appointment.delete()
-        return Response({"msg" : "Deleted Appointment Successfully"})
-    else:
-        return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
+    try:
+        appointment = Appointment.objects.get(id=appo_id)
+        if appointment.users.id == request.user.id:
+            appointment.delete()
+            return Response({"msg" : "Deleted Appointment Successfully"})
+        else:
+            return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
+    except:
+        return Response({"msg": "Could not delete the appointment not found "}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 
@@ -299,10 +310,3 @@ def list_truck(request : Request):
         return Response(dataResponse)
     else:
         return Response({"msg": "There is no trucks registered for you"}, status=status.HTTP_404_NOT_FOUND)
-
-
-
-
-
-
-
