@@ -1,0 +1,604 @@
+{
+	"info": {
+		"_postman_id": "736965b7-8852-4760-9bf1-61cbcb149871",
+		"name": "House Moving",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21319417"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"bushra22\",\r\n  \"email\": \"b2@example.com\",\r\n   \"password\": \"1234\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"bushra22\",\r\n   \"password\": \"1234\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NTM3NzEyLCJpYXQiOjE2NTUxMDU3MTIsImp0aSI6ImQ4N2JlZjRmNWM5MzQxYzI5Yjg0NDMzODc0YjUzYWNmIiwidXNlcl9pZCI6M30.7RGnM1_iWFaS3O3wZzPd7cvelUw8MK4Me5oSTELo6Oc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/user/search/bu",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"user",
+								"search",
+								"bu"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Houses",
+			"item": [
+				{
+					"name": "Add House",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NjM2MDEwLCJpYXQiOjE2NTUyMDQwMTAsImp0aSI6IjliZDU5ZDkzMjhmNTRkMzk4MDZiNDFmNjdmMDUwNTM4IiwidXNlcl9pZCI6Mn0.69Lk2f3xJvEmkuvLMYhP0XtFJ4vUAOppeqtHOz1byGQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\": \" Bushra's house\",\r\n \"previous_address\": \"Al yasmin\",\r\n \"new_address\": \"Qurtbah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/house/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"house",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Houses List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NjI2Mzk5LCJpYXQiOjE2NTUxOTQzOTksImp0aSI6IjQ0MzgwMzEyYWIyMDQ1MGE4NjdjMDlmM2RhYmFkMmM2IiwidXNlcl9pZCI6NH0._gNgZzCmZtxyQOOdQEzmAQma7ojKEy9PISJUf6h1eFA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/house/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"house",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update House",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NDcyMzQ2LCJpYXQiOjE2NTUwNDAzNDYsImp0aSI6IjA1YzgzNjYzNmJjZDRlMGU4MTMzMWQ5MjhlYTUzMzkxIiwidXNlcl9pZCI6MX0.5ZA8nmwxqmDEeaQuK911f4UsCXD5JoLwEbHuCPpdR70",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\": \" Bushra's house\",\r\n \"previous_address\": \"Al munisya\",\r\n \"new_address\": \"Qurtbah\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/house/update/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"house",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete House",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/note/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"note",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "House Belongings",
+			"item": [
+				{
+					"name": "Add Belonging",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NTM0NjM2LCJpYXQiOjE2NTUxMDI2MzYsImp0aSI6ImI4MTdmNDcwYTFkMjQzZWFiOTg4Zjk1YmNlYzhhY2RmIiwidXNlcl9pZCI6M30.52z-IRfG26pUWUJmf3bru6iDY1HFoRoJUaA8ilWl-nk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"house\": 2,\r\n \"name\": \"couch\",\r\n \"type_belonging\": \"furniture\",\r\n \"room\": \"guestroom\"\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/belonging/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"belonging",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Belongings List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1MDI2MjA5LCJpYXQiOjE2NTUwMjU5MDksImp0aSI6ImIzMDFkYTEzMTYyYTQyZWVhYjdkZmY0MWMzNGJlMWU3IiwidXNlcl9pZCI6M30.YupgAsh9yJLy7vYwbOr15ba45hiOI8u_9FRkJTfpmhk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/belonging/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"belonging",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Belonging",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NTM0NjM2LCJpYXQiOjE2NTUxMDI2MzYsImp0aSI6ImI4MTdmNDcwYTFkMjQzZWFiOTg4Zjk1YmNlYzhhY2RmIiwidXNlcl9pZCI6M30.52z-IRfG26pUWUJmf3bru6iDY1HFoRoJUaA8ilWl-nk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n            \"name\": \"dinner table\",\r\n            \"type_belonging\": \"furniture\",\r\n            \"room\": \"kitchen\",\r\n            \"house\": 1\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/belonging/update/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"belonging",
+								"update",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Belonging",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NTM0NjM2LCJpYXQiOjE2NTUxMDI2MzYsImp0aSI6ImI4MTdmNDcwYTFkMjQzZWFiOTg4Zjk1YmNlYzhhY2RmIiwidXNlcl9pZCI6M30.52z-IRfG26pUWUJmf3bru6iDY1HFoRoJUaA8ilWl-nk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/belonging/delete/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"belonging",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appointments",
+			"item": [
+				{
+					"name": "Add Appointment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NjIyNTc1LCJpYXQiOjE2NTUxOTA1NzUsImp0aSI6ImI2ZWU5MzA3MWQzMDQyNDE5MzEzZGZlODA0NjFkNGQzIiwidXNlcl9pZCI6Mn0.Cn4CLGkB7oGHMzZjUnzBKNEpj5kK8turnbeIAyJ1OK8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"house\": 1,\r\n \"reservation_date\": \"2022-09-10 13:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/appointment/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"appointment",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Appointment",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NTM3MDAzLCJpYXQiOjE2NTUxMDUwMDMsImp0aSI6Ijc0NmQxODc0ODdkMzQyMzk5ZTA5NjkxMGQyYWEyN2I3IiwidXNlcl9pZCI6NX0.BVKfXDJAQMzpG_M59UoXB6hc5wT-4TMPJrPT9WzooT4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"house\": 2,\r\n \"reservation_date\": \"2022-07-16 13:30:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/appointment/update/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"appointment",
+								"update",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Appointment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NTM3MDAzLCJpYXQiOjE2NTUxMDUwMDMsImp0aSI6Ijc0NmQxODc0ODdkMzQyMzk5ZTA5NjkxMGQyYWEyN2I3IiwidXNlcl9pZCI6NX0.BVKfXDJAQMzpG_M59UoXB6hc5wT-4TMPJrPT9WzooT4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/appointment/delete/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"appointment",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Appointments List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NjI2Mzk5LCJpYXQiOjE2NTUxOTQzOTksImp0aSI6IjQ0MzgwMzEyYWIyMDQ1MGE4NjdjMDlmM2RhYmFkMmM2IiwidXNlcl9pZCI6NH0._gNgZzCmZtxyQOOdQEzmAQma7ojKEy9PISJUf6h1eFA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/appointment/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"appointment",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View User Appointment ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NjI0Mzg3LCJpYXQiOjE2NTUxOTIzODcsImp0aSI6IjA4MDYyMzViNzM2MzRiMmZhNjY2NTk3NTA1MWI1NTI1IiwidXNlcl9pZCI6NX0.cYqdhKHQ0SveITgiE11fRMMqsqpSR_MHRdbuHw9d2AY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/appointment/user",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"appointment",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Moving Trucks",
+			"item": [
+				{
+					"name": "List Trucks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU1NDcwNjM0LCJpYXQiOjE2NTUwMzg2MzQsImp0aSI6IjI2ZWNhYmM1OWY5NTQ5YWZiMmY5MTU5YzgwZmE3ZTNhIiwidXNlcl9pZCI6NH0.V8NlJYcAPMt6inLOrICc5E6ZQkCI6UBl2nndtLT36g4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/houses/truck/all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"houses",
+								"truck",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

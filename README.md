@@ -30,7 +30,9 @@ Facilitating the Moving out/in process between houses. Also, keeping track of th
 
 - Add House.
 - Edit house information.
+- Delete house.
 - Reserve appointment.
+- view appointment.
 - edit appointment.
 - delete appointment.
 
@@ -47,7 +49,7 @@ Facilitating the Moving out/in process between houses. Also, keeping track of th
 
 - Get the house information.
 - Get the house owner information.
-- Get the car/truck inforamtion.
+- Get the moving truck inforamtion.
 
 
 ------------
@@ -65,7 +67,7 @@ Facilitating the Moving out/in process between houses. Also, keeping track of th
 #### Apointment:
 - House
 - User
-- Date/time
+- Reservation_date
 
 ##### Belongings:
 - House
@@ -74,8 +76,7 @@ Facilitating the Moving out/in process between houses. Also, keeping track of th
 - Room (choices= living room, kitchen, bedroom, kids room)
 - Quantity
 
-##### Car/Truck:
+##### Moving Truck:
 - Size
 - House
 - Driver
-- Quantity
