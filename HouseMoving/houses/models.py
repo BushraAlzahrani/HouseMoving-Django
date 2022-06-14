@@ -53,3 +53,6 @@ class MovingTruck(models.Model):
     Size = models.CharField(max_length=20)
     quantity = models.IntegerField()
     driver = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import *
+from django.contrib.auth.models import User
 
 
 class HouseSerializer(serializers.ModelSerializer):
@@ -16,6 +17,25 @@ class HouseSerializerUpdate(serializers.ModelSerializer):
 
 class AppointmentSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Appointment
+        fields = '__all__'
+
+
+class UserSerializerview(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+
+class HousesSerializer(serializers.ModelSerializer):
+    owner = UserSerializerview()
+    class Meta:
+        model = House
+        fields = '__all__'
+
+class AppointmentSerializerDriverPacker(serializers.ModelSerializer):
+    house = HousesSerializer()
     class Meta:
         model = Appointment
         fields = '__all__'

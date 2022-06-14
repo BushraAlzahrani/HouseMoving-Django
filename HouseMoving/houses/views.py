@@ -44,7 +44,7 @@ def list_house(request : Request):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
     house = House.objects.all()
-    houses_list = HouseSerializer(instance=house, many=True).data
+    houses_list = HousesSerializer(instance=house, many=True).data
     dataResponse = {
         "msg": "List of All Houses",
         "houses": houses_list
@@ -168,27 +168,31 @@ def delete_belonging(request: Request, belong_id):
 
 # Appointments Views:
 
-
 @api_view(['POST'])
 @authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def add_appointment(request : Request):
-    ''' this view function is for adding a appointment if the user is authenticated and has permission from house owner group '''
+    '''this view function is for adding a appointment if the user is authenticated and has permission from house owner group'''
     if not request.user.is_authenticated or not request.user.has_perm('houses.add_appointment'):
-        return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
     request.data["users"] = request.user.id
     adding_appointment = AppointmentSerializer(data=request.data)
-    if adding_appointment.is_valid():
-        adding_appointment.save()
-        dataResponse = {
-            "msg" : "Created Successfully",
-            "appointment": adding_appointment.data
-        }
-        return Response(dataResponse)
+    appointment = Appointment.objects.filter(users=request.user.id)
+    print(request.user.id)
+    if appointment.exists():
+        return Response({"msg": "you already have an appointment"}, status=status.HTTP_400_BAD_REQUEST)
     else:
-        print(adding_appointment.errors)
-        return Response( {"msg": "couldn't add the appointment"}, status=status.HTTP_400_BAD_REQUEST)
+        if adding_appointment.is_valid():
+            adding_appointment.save()
+            dataResponse = {
+                "msg": "Created Successfully",
+                "appointment": adding_appointment.data
+            }
+            return Response(dataResponse)
+        else:
+            print(adding_appointment.errors)
+            return Response({"msg": "couldn't add the appointment"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
@@ -200,7 +204,7 @@ def list_appointment(request : Request):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
     appointment = Appointment.objects.all()
-    appointments_list = AppointmentSerializer(instance=appointment, many=True).data
+    appointments_list = AppointmentSerializerDriverPacker(instance=appointment, many=True).data
     dataResponse = {
         "msg": "List of All Appointments",
         "appointments": appointments_list
@@ -219,10 +223,10 @@ def user_appointment(request : Request):
     appointment = Appointment.objects.filter(users=request.user.id)
     print(request.user.id)
     if appointment.exists():
-        #user_appointment = AppointmentSerializer(instance=appointment, many=True).data
+        user_appointment = AppointmentSerializer(instance=appointment, many=True).data
         dataResponse = {
             "msg": "Your Appointment",
-            "appointments": AppointmentSerializer(instance=appointment, many=True).data
+            "appointments": user_appointment
         }
         return Response(dataResponse)
     else:
