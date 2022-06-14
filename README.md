@@ -5,7 +5,7 @@
 A system to manage moving out/in house's bleongings like furntiure, kitchenware even personal stuff such as clothes if the owner desires so.
 
 ## Inspiration:
-Facilitating the Moving out/in process wither it is between houses in the same city or to a diffrent city. Also, keeping track of the house bleongings and mangaing those who will pack and move it.
+Facilitating the Moving out/in process between houses. Also, keeping track of the house bleongings and mangaing those who will pack and move it.
  
 ## List of Services / Features:
 
@@ -24,7 +24,7 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 - Create, Read, Update, Delete House Owner.
 - Create, Read, Update, Delete Packers.
 - Create, Read, Update, Delete Drivers.
-- Read, Delete Houses.
+- Create, Read, Update, Delete Moving Trucks.
 
 ### House Owner
 
@@ -33,17 +33,15 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 - Reserve appointment.
 - edit appointment.
 - delete appointment.
-- View their information.
-- Edit their information.
 
 ### Packers
 
 - Get the house information.
 - Get the house owner information.
 - view appointments.
-- Add house blenggings.
-- Edit house blenggings.
-- Delete house blenggings.
+- Add house belongings.
+- Edit house belongings.
+- Delete house belongings.
 
 ### Drivers
 
@@ -59,9 +57,9 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 
 
 ##### House:
+- Name
 - Previous_Address
 - New_Address
-- City
 - Owner
 
 #### Apointment:
@@ -72,8 +70,9 @@ Facilitating the Moving out/in process wither it is between houses in the same c
 ##### Belongings:
 - House
 - Name (couch, wardrobe, silverware...)
-- Type(furniture, kitchenware, clothes, toys, or other can be written )
-- Room (living room, kitchen, bedroom, kids room)
+- Type_belonging(choices= furniture, kitchenware, clothes, toys)
+- Room (choices= living room, kitchen, bedroom, kids room)
+- Quantity
 
 ##### Car/Truck:
 - Size
