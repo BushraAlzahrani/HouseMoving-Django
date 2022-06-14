@@ -23,16 +23,20 @@ def add_house(request : Request):
 
     request.data["owner"] = request.user.id
     adding_house = HouseSerializer(data=request.data)
-    if adding_house.is_valid():
-        adding_house.save()
-        dataResponse = {
-            "msg" : "Created Successfully",
-            "house": adding_house.data
-        }
-        return Response(dataResponse)
+    house = House.objects.filter(owner=request.user.id)
+    if house.exists():
+        return Response({"msg": "you already added a house"}, status=status.HTTP_400_BAD_REQUEST)
     else:
-        print(adding_house.errors)
-        return Response( {"msg": "couldn't add the house"}, status=status.HTTP_400_BAD_REQUEST)
+        if adding_house.is_valid():
+            adding_house.save()
+            dataResponse = {
+                "msg" : "Created Successfully",
+                "house": adding_house.data
+            }
+            return Response(dataResponse)
+        else:
+            print(adding_house.errors)
+            return Response( {"msg": "couldn't add the house"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
@@ -89,8 +93,6 @@ def delete_house(request: Request, house_id):
     house = House.objects.get(id=house_id)
     house.delete()
     return Response({"msg" : "Deleted House Successfully"})
-
-
 
 
 
@@ -286,13 +288,18 @@ def list_truck(request : Request):
     if not request.user.is_authenticated or not request.user.has_perm('houses.view_movingtruck'):
         return Response({"msg": "Not Allowed"}, status=status.HTTP_401_UNAUTHORIZED)
 
-    trucks = MovingTruck.objects.all()
-    trucks_list = TrucksSerializer(instance=trucks, many=True).data
-    dataResponse = {
-        "msg": "List of All Trucks",
-        "houses": trucks_list
-    }
-    return Response(dataResponse)
+    trucks = MovingTruck.objects.filter(driver=request.user.id)
+    print(request.user.id)
+    if trucks.exists():
+        trucks_list = TrucksSerializer(instance=trucks, many=True).data
+        dataResponse = {
+            "msg": "Your Truck",
+            "houses": trucks_list
+        }
+        return Response(dataResponse)
+    else:
+        return Response({"msg": "There is no trucks registered for you"}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 

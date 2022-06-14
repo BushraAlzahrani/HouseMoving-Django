@@ -51,7 +51,6 @@ class MovingTruck(models.Model):
 
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     Size = models.CharField(max_length=20)
-    quantity = models.IntegerField()
     driver = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
