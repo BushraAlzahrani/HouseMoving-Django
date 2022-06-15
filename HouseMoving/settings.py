@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-+#7$7xxf^0s7-e3%xswbg1@r^rpjl4984q0+5ru!cg9aw42vmx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ALLOWED_HOSTS = ['housemoving.herokuapp.com']
 
 # Application definition
 
