@@ -54,6 +54,9 @@ Facilitating the Moving out/in process between houses. Also, keeping track of th
 
 ------------
 
+## Deployment
+
+https://housemoving.herokuapp.com/
 
 #### Models
 
