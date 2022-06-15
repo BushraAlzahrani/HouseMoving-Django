@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
 
 
-ALLOWED_HOSTS = ['housemoving.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['housemoving.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
@@ -139,8 +139,12 @@ SIMPLE_JWT = {
 }
 
 
+
+#DATABASES = {'default': dj_database_url.config()}
+
 import dj_database_url
-DATABASES = {'default': dj_database_url.config()}
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
