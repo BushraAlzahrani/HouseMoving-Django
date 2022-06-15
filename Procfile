@@ -1,1 +1,1 @@
-web: gunicorn HouseMoving.wsgi --log-file -
+web: gunicorn HouseMoving.wsgi

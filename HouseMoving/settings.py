@@ -23,15 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-+#7$7xxf^0s7-e3%xswbg1@r^rpjl4984q0+5ru!cg9aw42vmx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-
-# Read SECRET_KEY from an environment variable
-import os
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&k3q+pmu)5%asj6yjpkag')
-DEBUG = os.environ.get('DJANGO_DEBUG', True)
-
-ALLOWED_HOSTS = ['housemoving.herokuapp.com','127.0.0.1']
+DEBUG = True
 
 
 # Application definition
@@ -140,11 +132,8 @@ SIMPLE_JWT = {
 }
 
 
-# Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-
+DATABASES = {'default': dj_database_url.config()}
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
 STATIC_ROOT = BASE_DIR / 'staticfiles'
